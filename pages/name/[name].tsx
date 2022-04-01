@@ -4,6 +4,7 @@ import React from 'react'
 import pokeApi from '../../api/pokeApi';
 import { Layout } from '../../components/layouts';
 import { Pokemon, PokemonListResponse, SmallPokemon } from '../../interfaces';
+import { getPokemonInfo } from '../../utils';
 
 
 interface Props {
@@ -91,19 +92,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   
   const { name } = params as { name: string };
 
-  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}`)
-
-  const pokemon = {
-    id: data.id,
-    name: data.name,
-    sprites: data.sprites,
-
-  }
-
-
   return {
     props: {
-      pokemon
+      pokemon: await getPokemonInfo(name)
     }
   }
   
