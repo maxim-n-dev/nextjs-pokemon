@@ -12,9 +12,6 @@ const origin = ( typeof window  === 'undefined' ? '': window.location.origin );
 
 export const Layout:FC<LayoutProps> = ({ children, title, pokemon }) => {
 
-
-( console.log({ origin }) );
-
   return (
     <>
       <Head>
